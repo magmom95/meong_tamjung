@@ -38,25 +38,58 @@
                 <input type="email" class="form-control" id="email" placeholder="이메일을 입력해 주세요." required>
             </div>
 
-            <button type="button" id="signup-button" class="btn btn-primary mb-3">회원가입</button>
+            <button type="button" id="signup-button" class="btn btn-primary mb-3" onclick="sign()">회원가입</button>
         </div>
     </form>
     <script>
-        const signupForm = document.querySelector("#signup-form");
-        const signupButton = document.querySelector("#signup-button");
-        const password = document.querySelector("#password");
-        const passwordCheck = document.querySelector("#password-check");
-        const name = document.querySelector("#name");
-        const email = document.querySelector("#email");
-        signupButton.addEventListener("click", function (e) {
+        // const signupForm = document.querySelector("#signup-form");
+        // const signupButton = document.querySelector("#signup-button");
+        // const password = document.querySelector("#password");
+        // const passwordCheck = document.querySelector("#password-check");
+        // const name = document.querySelector("#name");
+        // const email = document.querySelector("#email");
+        // signupButton.addEventListener("click", function (e) {
 
-                if (password.value && password.value === passwordCheck.value) {
-                    signupForm.submit();
-                    alert("가입완료!");
-                } else {
-                    alert("비밀번호가 서로 일치하지 않습니다");
+        //     if (password.value && password.value === passwordCheck.value) {
+        //         signupForm.submit();
+        //         alert("가입완료!");
+        //     } else {
+        //         alert("비밀번호가 서로 일치하지 않습니다");
+        //     }
+        // });
+
+
+        function sign() {
+
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // data = app.py에서 return 받은 Crawling.interparkcrawling(word)결과값
+                    data = this.responseText;
+                    // data = JSON.parse(data);
+
+                    console.log(data)
+                    alert('완료');
                 }
-        });
+            };
+
+            // choice_data = document.getElementById('linestoplist').innerText;
+            let id = document.getElementById("u_id").value
+            let pw = document.getElementById("password").value
+            let name = document.getElementById("name").value
+            let email = document.getElementById("email").value
+
+            querystring = "id=" + id + "&pw=" + pw + "&name=" + name + "&email=" + email;
+            xhttp.open("POST", "/sign_in");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            console.log(querystring);
+            xhttp.send(querystring);
+
+        }
+
+
+
+
     </script>
 </body>
 
