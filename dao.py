@@ -29,31 +29,124 @@ class Database():
         self.db.commit()
 
 class Database2():
-    # def insertdb(data):
-    def insertdb():
-        conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
-        cursor = conn.cursor()
-        # cursor.execute("INSERT INTO user(id, pw, name, email) VALUES ('tjsdud594', '1234@', '룬선영', 'fbtjsdud594@gmail.com')", data)
-        cursor.execute("INSERT INTO user(id, pw, name, email) VALUES ('tjsdud594', '1234@', '룬선영', 'fbtjsdud594@gmail.com')")
-        print('완료')
+    def insertdb(data):
+    # def insertdb():
+        try:
+            conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+            cursor = conn.cursor()
+
+            try:
+                cursor.execute("INSERT INTO user(id, pw, name, email) VALUES (%s, %s, %s, %s)", data)
+                # cursor.execute("INSERT INTO user(id, pw, name, email) VALUES ('tjsdud594', '1234@', '룬선영', 'fbtjsdud594@gmail.com')")
+            except Exception as e:
+                print(e)
+            
+        except Exception as e:
+            print(e)
+
         conn.commit()
         conn.close()
 
-    def deletedb():
-        conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
-        cursor = conn.cursor()
-        cursor.execute("delete from user where name='룬선영'")
-        print('완료')
+
+    def email_check(email):
+        try:
+            conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+            cursor = conn.cursor()
+
+            try:
+                cursor.execute("SELECT * FROM USER WHERE email=%s", email)
+                row = cursor.fetchone()
+                print(row)
+                return row
+            except Exception as e:
+                print(e)
+            
+        except Exception as e:
+            print(e)
+
         conn.commit()
         conn.close()
+
+    def id_check(id):
+        try:
+            conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+            cursor = conn.cursor()
+
+            try:
+                cursor.execute("SELECT * FROM USER WHERE id=%s", id)
+                row = cursor.fetchone()
+                print(row)
+                return row
+            except Exception as e:
+                print(e)
+            
+        except Exception as e:
+            print(e)
+
+        conn.commit()
+        conn.close()
+
+
+
+    def deletedb(id):
+        try:
+            conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+            cursor = conn.cursor()
+
+            try:
+                cursor.execute("delete from user where email=(select sub_user.email from ( select email from user where id=%s) sub_user)", id)
+                print('완료')
+            except Exception as e:
+                print(e)
+            
+        except Exception as e:
+            print(e)
+
+        conn.commit()
+        conn.close()
+
 
     def selectdb():
-        conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
-        cursor = conn.cursor()
-        cursor.execute("select * from user")
-        rows = cursor.fetchall()
-        print(rows)
+        try:
+            conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+            cursor = conn.cursor()
+            try:
+                cursor.execute("select * from user")
+                rows = cursor.fetchall()
+                print(rows)
+
+            except Exception as e:
+                print(e)
+            
+        except Exception as e:
+            print(e)
+        
+        conn.commit()
         conn.close()
+
+
+
+    def logindb(idpw):
+        try:
+            conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+            cursor = conn.cursor()
+            
+            try:
+                cursor.execute("select * from user where id=%s and pw = %s", idpw)
+                row = cursor.fetchone()
+                print(row)
+                return row
+
+            except Exception as e:
+                print(e)
+            
+        except Exception as e:
+            print(e)
+                
+        conn.commit()
+        conn.close()
+
+
 
 
 # if __name__=="__main__":
@@ -61,3 +154,4 @@ class Database2():
     # Database2.deletedb()
     # Database2.insertdb()
     # Database2.selectdb()
+    # Database2.email_check('ddd@naver.com')
