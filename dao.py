@@ -55,6 +55,13 @@ class Database2():
         print(rows)
         conn.close()
 
+class Database3():
+    def insert():
+        conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+        cursor = conn.cursor()
+        cursor.execute("insert from product(p_name, p_price, p_pic)")
+
+
 
 # if __name__=="__main__":
 #     # -*- conding: utf-8 -*-
