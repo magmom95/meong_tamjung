@@ -58,4 +58,7 @@ DELIMITER ;
 
 -- 구매제품 테이블 생성
 
- 
+CREATE TABLE product (p_id INT not null auto_increment primary key,
+     p_name varchar(50) not null unique,
+     p_price INT not null
+     );
