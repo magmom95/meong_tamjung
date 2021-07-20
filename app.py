@@ -10,9 +10,10 @@ def get():
 def shop():
     return render_template('shop.html')  
 
-@app.route('/join', methods=['get', 'post'])
-def join():
-    return render_template('join.html')   
+@app.route('/sign', methods=['get'])
+def sign():
+    return render_template('join.html')  
+
 
 
 if __name__ == "__main__":
