@@ -13,11 +13,16 @@
 </head>
 
 <body>
+    <div style="margin-left: 100px; margin-top: 20px;">
+        <button type="button" id="signup-button" class="btn btn-primary mb-3" onclick="home()">홈으로</button>
+
+    </div>
     <form action="signupProcess.php" method="POST" id="signup-form">
         <div class="w-50 ml-auto mr-auto mt-5">
             <div class="mb-3">
                 <label for="u_id" class="form-label">아이디</label>
                 <input type="u_id" name="u_id" class="form-control" id="u_id" placeholder="아이디를 입력해 주세요." required>
+                <!-- <button type="button" id="signup-button" class="btn btn-primary mb-3" onclick="sign()">중복체크</button> -->
             </div>
             <div id="id_check"></div>
             <div class="mb-3">
@@ -40,6 +45,15 @@
 
             <button type="button" id="signup-button" class="btn btn-primary mb-3" onclick="sign()">회원가입</button>
         </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">아이디를 적어주세요</label>
+            <input type="email" class="form-control" id="quit_id" placeholder="정말 탈퇴하시겠습니까?">
+        </div>
+
+        <button type="button" id="signup-button" class="btn btn-primary mb-3" onclick="quit()">회원탈퇴</button>
+
+
     </form>
     <script>
         // const signupForm = document.querySelector("#signup-form");
@@ -58,6 +72,9 @@
         //     }
         // });
 
+        function home() {
+            window.location.href = '/'
+        }
 
         function sign() {
 
@@ -69,7 +86,8 @@
                     // data = JSON.parse(data);
 
                     console.log(data)
-                    alert('완료');
+                    alert(data);
+                    // window.location.href = '/shop'
                 }
             };
 
@@ -84,9 +102,31 @@
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             console.log(querystring);
             xhttp.send(querystring);
-
         }
 
+        function quit() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // data = app.py에서 return 받은 Crawling.interparkcrawling(word)결과값
+                    data = this.responseText;
+                    // data = JSON.parse(data);
+
+                    console.log(data)
+                    alert(data);
+                    // window.location.href = '/shop'
+                }
+            };
+
+            // choice_data = document.getElementById('linestoplist').innerText;
+            let id = document.getElementById("quit_id").value
+
+            querystring = "id=" + id;
+            xhttp.open("POST", "/sign_quit");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            console.log(querystring);
+            xhttp.send(querystring);
+        }
 
 
 
