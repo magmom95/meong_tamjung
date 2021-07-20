@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request, session, flash, redirect, url_for
 from flask import current_app
 from dao import Database2
+from dao import Database3
 
 
 app = Flask(__name__)
@@ -75,6 +76,14 @@ def logout():
 
     session.pop("user")
     return '로그아웃 되었습니다!'
+
+@app.route('/order', methods=['POST'])
+def order():
+    p_name = request.form.get('p_name')
+    p_price = request.form.get('p_price')
+    data = (p_name, p_price)
+    if Database3.insert(data):
+        return '주문을 완료하였습니다!!'
 
 if __name__ == "__main__":
     app.run(debug=True, host="127.0.0.1", port="5000")

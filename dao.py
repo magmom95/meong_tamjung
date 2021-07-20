@@ -147,10 +147,20 @@ class Database2():
         conn.close()
 
 class Database3():
-    def insert():
-        conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
-        cursor = conn.cursor()
-        cursor.execute("insert from product(p_name, p_price, p_pic)")
+    def insert(data):
+        try:
+            conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+            cursor = conn.cursor()
+            try:
+                cursor.execute("INSERT INTO product(p_name, p_price) VALUES (%s, %s)", data)
+            except Exception as e:
+                print(e)
+
+        except Exception as e:
+            print(e)
+
+        conn.commit()
+        conn.close()
 
 
 

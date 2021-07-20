@@ -26,7 +26,7 @@
 		<section class="primary">		
 			<ul class="card-list">
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/lee.jpg);"></figure>
+					<figure class="card-image" style="background-image: url(static/images/lee.jpg);"></figure>
 					<div class="card-desc"><a href="board.html" target="_blank"></a>
 						<p>이름:</p>
 						<p>가격:</p>
@@ -38,7 +38,7 @@
 					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/css.png);"></figure>
+					<figure class="card-image" style="background-image: url(static/images/css.png);"></figure>
 					<div class="card-desc"><a href="board.html" target="_blank"></a>
 						<p>이름:</p>
 						<p>가격:</p>
@@ -50,7 +50,7 @@
 					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/html.png);"></figure>
+					<figure class="card-image" style="background-image: url(static/images/html.png);"></figure>
 					<div class="card-desc"><a href="board.html" target="_blank"></a>
 						<p>이름:</p>
 						<p>가격:</p>
@@ -62,7 +62,7 @@
 					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/flask.png);"></figure>
+					<figure class="card-image" style="background-image: url(static/images/flask.png);"></figure>
 					<div class="card-desc"><a href="board.html" target="_blank"></a>
 						<p>이름:</p>
 						<p>가격:</p>
@@ -74,7 +74,7 @@
 					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/playdata.png);"></figure>
+					<figure class="card-image" style="background-image: url(static/images/playdata.png);"></figure>
 					<div class="card-desc"><a href="board.html" target="_blank"></a>
 						<p>이름:</p>
 						<p>가격:</p>
@@ -86,7 +86,7 @@
 					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/dacon.png);"></figure>
+					<figure class="card-image" style="background-image: url(static/images/dacon.png);"></figure>
 					<div class="card-desc"><a href="board.html" target="_blank"></a>
 						<p>이름:</p>
 						<p>가격:</p>
@@ -98,7 +98,7 @@
 					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/kaggle.png);"></figure>
+					<figure class="card-image" style="background-image: url(static/images/kaggle.png);"></figure>
 					<div class="card-desc"><a href="board.html" target="_blank"></a>
 						<p>이름:</p>
 						<p>가격:</p>
@@ -114,19 +114,19 @@
 		<aside class="secondary secondary-a">
 			<ul class="user-list friend-list">
 				<li class="user-item friend-item">
-					<figure class="user-photo" style="background-image: url(images/2user.jpeg);"></figure>
+					<figure class="user-photo" style="background-image: url(static/images/2user.jpeg);"></figure>
 					<p class="user-name">
 						잠자는 그루
 					</p>
 				</li>
 				<li class="user-item friend-item">
-					<figure class="user-photo" style="background-image: url(images/3user.jpg);"></figure>
+					<figure class="user-photo" style="background-image: url(static/images/3user.jpg);"></figure>
 					<p class="user-name">
 						뛰는 그루 
 					</p>
 				</li>
 				<li class="user-item friend-item">
-					<figure class="user-photo" style="background-image: url(images/1user.jpg);"></figure>
+					<figure class="user-photo" style="background-image: url(static/images/1user.jpg);"></figure>
 					<p class="user-name">
 						나는 그루
 					</p>
@@ -137,7 +137,7 @@
 		<aside class="secondary secondary-b">
 			<ul class="user-list">
 				<li>
-					<img class="picture" src="images/go.png" style="height: 1100px;" >			
+					<img class="picture" src="static/images/go.png" style="height: 1100px;" >			
 				</li>
 			</ul>
 		</aside>
@@ -151,10 +151,19 @@
 			const xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function(){
 				if (this.readyState ==4 && this.status == 200) {
-					data = JSON.parse(this.responseText);
-					
+					data = this.responseText;
+					alert(data)
 				}
-			}
+			};
+
+			let p_name = document.getElementById("p_name").value
+			let p_price = document.getElementById("p_price").value
+
+			querystring = "p_name=" + p_name + "p_price" + p_price;
+			xhttp.open("POST", "/order");
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			console.log(querystring);
+			xhttp.send(querystring);
 		}
 	</script>
 </body>
