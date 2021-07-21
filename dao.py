@@ -145,6 +145,37 @@ class Database2():
                 
         conn.commit()
         conn.close()
+        
+      
+    def insert(data):
+        try:
+            conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+            cursor = conn.cursor()
+            try:
+                cursor.execute("INSERT INTO product(p_name, p_price) VALUES (%s, %s)", data)
+            except Exception as e:
+                print(e)
+
+        except Exception as e:
+            print(e)
+
+        conn.commit()
+        conn.close()
+
+    def insertdb2(data):
+        conn = pymysql.connect(host='localhost', user='root', password='1234', db='meong_tamjung', charset='utf8')
+        cursor = conn.cursor()
+        print('data1')
+        try:
+            print('data2')
+            cursor.execute("INSERT INTO p_order(p_name, p_price, id) VALUES (%s, %s, %s)", data)
+            print('완료')
+        except Exception as e:
+            print(e)
+        
+        conn.commit()
+        conn.close()
+
 
 
 
