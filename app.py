@@ -65,6 +65,26 @@ def login_check():
     else:
         return redirect(url_for("home"))
 
+# 로그아웃 기능
+@app.route('/logout_check', methods=['get'])
+def logout():
+
+    session.pop("user")
+    return '로그아웃 되었습니다!'
+
+
+@app.route('/order', methods=['POST'])
+def order():
+    p_name = request.form.get('p_name')
+    p_price = request.form.get('p_price')
+    id = request.form.get('id')
+    data = (p_name, p_price, id)
+    print(data)
+    Database2.insertdb2(data)
+    
+    return '주문을 완료하였습니다!!'
+
+
 
 
 if __name__ == "__main__":
