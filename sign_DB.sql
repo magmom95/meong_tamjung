@@ -77,7 +77,6 @@ CREATE TABLE p_order (p_no INT not null auto_increment primary key,
      p_name varchar(50) not null unique,
      p_price INT not null,
      id varchar(20) not null,
-     FOREIGN KEY (`id`) REFERENCES `user` (`id`)
 );
 
 
