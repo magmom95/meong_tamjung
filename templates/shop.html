@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,88 +10,132 @@
 	<link rel="stylesheet" href="static/css/ui.css">
 	<link rel="stylesheet" href="static/css/indexui.css">
 </head>
-<body>	
+
+<body>
 	<div class="page">
 		<header class="header">
-			<h1 class="website-title"><p>쇼핑몰</p></h1>
+			<a href="shop" class="title-name">쇼핑몰</a>
+			<a href="home">로그아웃</a>
 		</header>
 
 		<ul class="menu">
 			<li class="menu-item">
-				<a href="/" class="menu-link" >멍탐정</a>
+				<a href="home" class="menu-link">멍탐정</a>
 			</li>
 			<li class="menu-item">
-				<a href="/shop" class="menu-link" >Home</a>
+				<a href="?" class="menu-link">마이페이지</a>
 			</li>
 		</ul>
-		<section class="primary">		
+		<section class="primary">
 			<ul class="card-list">
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/lee.jpg);"></figure>
-					<div class="card-desc"><a href="board.html" target="_blank">
-						이번달 코딩 수상작품!
-					</a></div>
+					<figure class="card-image" style="background-image: url(static/images/20210322_231712.jpg);">
+					</figure>
+					<div class="card-desc"><a href="board.html" target="_blank"></a>
+						<p>이름: smile gru</p>
+						<p>가격: 3000</p>
+						<br>
+						<form method="get">
+							<button onclick="buy1()">주문</button>
+						</form>
+					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/css.png);"></figure>
-					<div class="card-desc"><a href="https://studiomeal.com/archives/533" target="_blank">
-						Grid에 관한 오해 “Grid는 인터넷 익스플로러(이하 IE)에서 지원하지 않기 때문에, 우리나라에서는 그림의 떡이다.”아닙니다. IE 10과 11에서도 구버전 스펙을 지원을 하기 때문에 좀 귀찮기는 해도 지원할 방법이 있습니다. 분명 한계는 있지..
-					</a></div>
+					<figure class="card-image" style="background-image: url(static/images/20210128_182128.jpg);">
+					</figure>
+					<div class="card-desc"><a href="board.html" target="_blank"></a>
+						<p id="name">이름: freeze</p>
+						<p id="price">가격: 2000</p>
+						<br>
+						<form method="get">
+							<button onclick="buy2()">주문</button>
+						</form>
+					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/html.png);"></figure>
-					<div class="card-desc"><a href="https://opentutorials.org/course/3084" target="_blank">
-						이 여행을 시작하기에 앞서서 한가지 준비가 필요한데요. 바로 우리들의 상상력입니다.
-						지금부터 여러분은 자신을 남의 문제를 통해서 코딩을 배우려는 학생이 아니라
-						나의 문제를 코딩으로 해결하려는 엔지니어라고 상상해주세요.
-					</a></div>
+					<figure class="card-image" style="background-image: url(static/images/20210118_150127.jpg);">
+					</figure>
+					<div class="card-desc"><a href="board.html" target="_blank"></a>
+						<p>이름: in snow</p>
+						<p>가격: 3500</p>
+						<br>
+						<form method="get">
+							<button onclick="buy3()">주문</button>
+						</form>
+					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/flask.png);"></figure>
-					<div class="card-desc"><a href="http://hleecaster.com/flask-introduction/" target="_blank">
-						Flask는 웹 애플리케이션 개발을 위한 파이썬 프레임워크다. 물론 파이썬으로 웹 개발을 할 때 많이 쓰이는 프레임워크로 가장 유명한 것은 Django(장고)인데, 
-						Django는 너무 무겁고 기능이 많아서 복잡하다. 
-					</a></div>
+					<figure class="card-image" style="background-image: url(static/images/20210310_110442.jpg);">
+					</figure>
+					<div class="card-desc"><a href="board.html" target="_blank"></a>
+						<p>이름: sleepy</p>
+						<p>가격: 1500</p>
+						<br>
+						<form method="get">
+							<button onclick="buy4()">주문</button>
+						</form>
+					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/playdata.png);"></figure>
-					<div class="card-desc"><a href="https://playdata.io/" target="_blank">
-						영상 데이터 기반 인공지능 서비스 개발자 과정 (6기) 모집
-					</a></div>
+					<figure class="card-image" style="background-image: url(static/images/20210331_163928.jpg);">
+					</figure>
+					<div class="card-desc"><a href="board.html" target="_blank"></a>
+						<p>이름: cherryblossom</p>
+						<p>가격: 2500</p>
+						<br>
+						<form method="get">
+							<button onclick="buy5()">주문</button>
+						</form>
+					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/dacon.png);"></figure>
-					<div class="card-desc"><a href="https://playdata.io/" target="_blank">
-						DACON이란? 현미경은 연못에 있는 물 한 방울에 우리가 볼 수 있다고 생각했던 것보다 많은 것이 들어 있음을 보여줍니다.
-						망원경은 밤하늘에 우리가 볼 수 있다고 생각했던 것보다 많은 것이 있음을 보여줬습니다.
-					</a></div>
+					<figure class="card-image" style="background-image: url(static/images/20210326_125831.jpg);">
+					</figure>
+					<div class="card-desc"><a href="board.html" target="_blank"></a>
+						<p>이름: best friend</p>
+						<p>가격: 4000</p>
+						<br>
+						<form method="get">
+							<button onclick="buy6()">주문</button>
+						</form>
+					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(images/kaggle.png);"></figure>
-					<div class="card-desc"><a href="https://www.kaggle.com/" target="_blank">
-						오늘은 캐글(Kaggle) 사이트에 대해서 소개하려고 한다. 아마 데이터 사이언스, 머신러닝에 대해 관심이 있는 사람이라면 이미 많이 들어봤을 것이다.
-					</a></div>
+					<figure class="card-image" style="background-image: url(static/images/20201231_171551.jpg);">
+					</figure>
+					<div class="card-desc"><a href="board.html" target="_blank"></a>
+						<p>이름: bye</p>
+						<p>가격: 500</p>
+
+						<br>
+						<form method="get">
+							<button onclick="buy7()">주문</button>
+						</form>
+					</div>
 				</li>
 			</ul>
 		</section>
 		<aside class="secondary secondary-a">
 			<ul class="user-list friend-list">
 				<li class="user-item friend-item">
-					<figure class="user-photo" style="background-image: url(images/2user.jpeg);"></figure>
+					<figure class="user-photo" style="background-image: url(static/images/20210315_225842.jpg);">
+					</figure>
 					<p class="user-name">
 						잠자는 그루
 					</p>
 				</li>
 				<li class="user-item friend-item">
-					<figure class="user-photo" style="background-image: url(images/3user.jpg);"></figure>
+					<figure class="user-photo" style="background-image: url(static/images/20201231_171551.jpg);">
+					</figure>
 					<p class="user-name">
-						뛰는 그루 
+						뛰는 그루
 					</p>
 				</li>
 				<li class="user-item friend-item">
-					<figure class="user-photo" style="background-image: url(images/1user.jpg);"></figure>
+					<figure class="user-photo" style="background-image: url(static/images/20210322_231712.jpg);">
+					</figure>
 					<p class="user-name">
-						나는 그루
+						웃는 그루
 					</p>
 				</li>
 			</ul>
@@ -99,14 +144,209 @@
 		<aside class="secondary secondary-b">
 			<ul class="user-list">
 				<li>
-					<img class="picture" src="images/go.png" style="height: 1100px;" >			
+					<img class="picture" src="static/images/go.png" style="height: 1100px;">
 				</li>
 			</ul>
 		</aside>
 		<footer class="footer">
-			<a href='tel:010-9962-4852'><p>📞</p></a>
+			<a href='tel:010-9962-4852'>
+				<p>📞</p>
+			</a>
 		</footer>
 	</div>
 	</div>
+	<script>
+		function buy1() {
+            if (sessionStorage.getItem('user') == null) {
+                alert("로그인이 필요한 항목입니다.");
+            
+            }
+            else {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // data = app.py에서 return 받은 Crawling.interparkcrawling(word)결과값
+                        data = this.responseText;
+                        // data = JSON.parse(data);
+                        console.log(data)
+						alert(data)
+                    }
+                }
+                // choice_data = document.getElementById('linestoplist').innerText;
+                let p_name ='smile gru'
+                let p_price = '3000'
+                let id = sessionStorage.getItem('user')
+                querystring = "p_name=" + p_name + "&p_price=" + p_price + "&id=" + id;
+                xhttp.open("POST", "/order");
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                console.log(querystring);
+                xhttp.send(querystring);
+            }
+        }
+		function buy2() {
+            if (sessionStorage.getItem('user') == null) {
+                alert("로그인이 필요한 항목입니다.");
+            
+            }
+            else {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // data = app.py에서 return 받은 Crawling.interparkcrawling(word)결과값
+                        data = this.responseText;
+                        // data = JSON.parse(data);
+                        console.log(data)
+						alert(data)
+                    }
+                }
+                // choice_data = document.getElementById('linestoplist').innerText;
+                let p_name = 'freeze'
+                let p_price = '2000'
+                let id = sessionStorage.getItem('user')
+                querystring = "p_name=" + p_name + "&p_price=" + p_price + "&id=" + id;
+                xhttp.open("POST", "/order");
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                console.log(querystring);
+                xhttp.send(querystring);
+            }
+        }
+		function buy3() {
+            if (sessionStorage.getItem('user') == null) {
+                alert("로그인이 필요한 항목입니다.");
+            
+            }
+            else {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // data = app.py에서 return 받은 Crawling.interparkcrawling(word)결과값
+                        data = this.responseText;
+                        // data = JSON.parse(data);
+                        console.log(data)
+						alert(data)
+                    }
+                }
+                // choice_data = document.getElementById('linestoplist').innerText;
+                let p_name = 'in snow'
+                let p_price = '3500'
+                let id = sessionStorage.getItem('user')
+                querystring = "p_name=" + p_name + "&p_price=" + p_price + "&id=" + id;
+                xhttp.open("POST", "/order");
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                console.log(querystring);
+                xhttp.send(querystring);
+            }
+        }
+		function buy4() {
+            if (sessionStorage.getItem('user') == null) {
+                alert("로그인이 필요한 항목입니다.");
+            
+            }
+            else {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // data = app.py에서 return 받은 Crawling.interparkcrawling(word)결과값
+                        data = this.responseText;
+                        // data = JSON.parse(data);
+                        console.log(data)
+						alert(data)
+                    }
+                }
+                // choice_data = document.getElementById('linestoplist').innerText;
+                let p_name = 'sleepy'
+                let p_price = '1500'
+                let id = sessionStorage.getItem('user')
+                querystring = "p_name=" + p_name + "&p_price=" + p_price + "&id=" + id;
+                xhttp.open("POST", "/order");
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                console.log(querystring);
+                xhttp.send(querystring);
+            }
+        }
+		function buy5() {
+            if (sessionStorage.getItem('user') == null) {
+                alert("로그인이 필요한 항목입니다.");
+            
+            }
+            else {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // data = app.py에서 return 받은 Crawling.interparkcrawling(word)결과값
+                        data = this.responseText;
+                        // data = JSON.parse(data);
+                        console.log(data)
+						alert(data)
+                    }
+                }
+                // choice_data = document.getElementById('linestoplist').innerText;
+                let p_name = 'cherryblossom'
+                let p_price = '2500'
+                let id = sessionStorage.getItem('user')
+                querystring = "p_name=" + p_name + "&p_price=" + p_price + "&id=" + id;
+                xhttp.open("POST", "/order");
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                console.log(querystring);
+                xhttp.send(querystring);
+            }
+        }
+		function buy6() {
+            if (sessionStorage.getItem('user') == null) {
+                alert("로그인이 필요한 항목입니다.");
+            
+            }
+            else {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // data = app.py에서 return 받은 Crawling.interparkcrawling(word)결과값
+                        data = this.responseText;
+                        // data = JSON.parse(data);
+                        console.log(data)
+						alert(data)
+                    }
+                }
+                // choice_data = document.getElementById('linestoplist').innerText;
+                let p_name = 'best friend'
+                let p_price = '4000'
+                let id = sessionStorage.getItem('user')
+                querystring = "p_name=" + p_name + "&p_price=" + p_price + "&id=" + id;
+                xhttp.open("POST", "/order");
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                console.log(querystring);
+                xhttp.send(querystring);
+            }
+        }
+		function buy7() {
+            if (sessionStorage.getItem('user') == null) {
+                alert("로그인이 필요한 항목입니다.");
+            
+            }
+            else {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // data = app.py에서 return 받은 Crawling.interparkcrawling(word)결과값
+                        data = this.responseText;
+                        // data = JSON.parse(data);
+                        console.log(data)
+						alert(data)
+                    }
+                }
+                // choice_data = document.getElementById('linestoplist').innerText;
+                let p_name = 'bye'
+                let p_price = '500'
+                let id = sessionStorage.getItem('user')
+                querystring = "p_name=" + p_name + "&p_price=" + p_price + "&id=" + id;
+                xhttp.open("POST", "/order");
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                console.log(querystring);
+                xhttp.send(querystring);
+            }
+        }
+	</script>
+	
 </body>
+
 </html>
