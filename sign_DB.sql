@@ -55,7 +55,51 @@ END //
 DELIMITER ;
 
 
-
 -- 구매제품 테이블 생성
+CREATE TABLE product (p_id INT not null auto_increment primary key,
+     p_name varchar(50) not null unique,
+     p_price INT not null
+     );
+
+
+-- 구매 제품 정보 추가
+INSERT INTO product(p_name, p_price) VALUES ('smile gru', 3000);
+INSERT INTO product(p_name, p_price) VALUES ('freeze', 2000);
+INSERT INTO product(p_name, p_price) VALUES ('in snow', 3500);
+INSERT INTO product(p_name, p_price) VALUES ('sleepy', 1500);
+INSERT INTO product(p_name, p_price) VALUES ('cherryblossom', 2500);
+INSERT INTO product(p_name, p_price) VALUES ('best friend', 4000);
+INSERT INTO product(p_name, p_price) VALUES ('bye', 500);
+
+
+-- 주문 테이블 생성
+CREATE TABLE p_order (p_no INT not null auto_increment primary key,
+     p_name varchar(50) not null unique,
+     p_price INT not null,
+     id varchar(20) not null,
+     FOREIGN KEY (`id`) REFERENCES `user` (`id`)
+);
+
+
+-- 스케줄러 사용하기
+-- 이벤트 스케줄러 활성화
+SET GLOBAL event_scheduler = ON;
+SET @@global.event_scheduler = ON;
+SET GLOBAL event_scheduler = 1;
+SET @@global.event_scheduler = 1; 
+
+
+-- 이벤트 등록 30초 test
+CREATE Event IF NOT EXISTS del_event
+ON SCHEDULE
+	EVERY 30 second
+    STARTS current_timestamp()
+DO
+	DELETE FROM deleteuser where deleteuser.deldate < now();
+
+
+-- 이벤트 삭제
+drop event del_event;
+
 
  
